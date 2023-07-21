@@ -1,0 +1,44 @@
+
+{
+  "rules": {
+    ".read": false,
+    ".write": false,
+    "user_log": {
+      "$uid": {
+        // Allow only authenticated content owners access to their data
+        ".read": "auth != null && auth.uid == $uid",
+        ".write": "auth != null && auth.uid == $uid"
+      }
+    },
+    
+    //Active for Ribbon.js dev work
+		"bias_annotations_allsides": {
+      "$uid": {
+        // If a user is logged in, they can read this dataset
+        ".read" : "auth.uid != null",
+        ".write" : "false"
+      }
+    },
+    
+    //Disabled because we're presently not using this node until we re-activate tagging.
+    //"sites": {
+      //"$uid": {
+      //".read" : "true",
+      //".write" : "true"
+      //".read" : "auth.uid != null",
+      //".write" : "auth.uid != null"
+      //}
+  	//},
+    
+    //Read is active for Qualtrics survey completion checking; service worker on VM can write
+    "Qualtrics_Demographics": {
+       "$uid": {
+          // Allow only authenticated users to check data
+          ".read": "auth != null && auth.uid == $uid",
+          ".write" : "false"
+       }
+    }
+  }
+}
+
+

@@ -1,0 +1,303 @@
+@import "..node_modules/bootstrap/scss";
+.big_one{
+  height: 160px;
+  filter: drop-shadow(.1rem .3rem .2rem lightgrey);
+}
+
+.upper_info{
+    display:flex;
+    flex-direction:row;
+    border: 1px solid lightgray;
+    justify-content:space-between;
+    align-items: stretch;
+    border-top-left-radius: 15px;
+    border-top-right-radius: 15px;
+    background-color:rgb(232, 237, 247);
+    color: rgb(88, 88, 88);
+    font-family: 'Gill Sans', Calibri, sans-serif;
+    font-size:18px;
+    font-weight: 350;
+}
+.currnet_article_info{ /* Current article information */
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    /* flex-grow: 2; */
+    padding: 1%;
+    /* border: 1px solid black; */
+  }
+.current_titles{ /*what is this? */
+  display:flex;
+  justify-content:center;
+  font-weight: 600;
+}
+
+.current_article{ 
+  display: flex;
+  flex-direction: row;
+  justify-content:center;
+}
+
+.article_title{ /* Current article information - title */
+    display:flex;
+    justify-content:center;
+    /* border: 1px solid black;   */
+    font-weight: 650;
+}
+
+
+.current_part1{ /* Current article information - source and category  */
+    display:flex;
+    flex-direction:row;
+    justify-content:center;
+    color: rgb(121, 121, 121);
+    font-size: .93em;
+    /* font-weight: 300; */
+    flex-grow: 2;
+    margin-top: 1%;
+    /* border: 1px solid black; */
+  }
+.current_part2{ /* Current article information - all other info */
+    display:flex;
+    flex-direction:row;
+    justify-content:center;
+    /* border: 1px solid black; */
+}
+.info_source{ /* Current article information - source   */
+  display:flex;
+  flex-direction:row;
+  /* border: 1px solid black; */
+}
+.info_bias{ /* Current article information - bias  */
+  display:flex;
+  flex-direction:row;
+  /* border: 1px solid black; */
+}
+.article_sentiment{
+  margin-right: 1%;
+}
+.article_polarization{
+  margin-left: 1%;
+}
+.your_bias_info{ /* Your Bias information part  */
+    display:flex;
+    flex-direction:column;
+    justify-self: start;  
+    justify-content: space-between;
+    padding: 1%;
+    border-top-right-radius: 15px;
+    font-weight: 600;
+    /* border: 1px solid black; */
+}
+.chart_title{ /* Your Dominant Bias - title */
+  display:flex;
+  flex-direction:row;
+  justify-content:center;
+    margin-bottom: 3%;
+    /* border: 1px solid black; */
+}
+.under_chart{ /* Your Bias information - chart and domianat bias */
+    display:flex;
+    flex-direction:row;
+    justify-self: start;
+    justify-content: space-between;  
+    /* border: 1px solid black;  */
+}
+.chart-bias_info_part1{ /* Your Bias information - chart  */
+    display: flex; 
+    flex-direction: column;
+    background-color: lightgrey;
+    align-items: center;
+    justify-content: center;
+    width:10vw;
+    margin-top: 1%;
+    margin-right: 1%;
+}
+.bias_info_part2{ /* Your Bias information - dominant bias  */
+    display: flex; 
+    flex-direction: column;  
+    font-weight: 500;
+    justify-content: center;
+}
+.Leaning1{ /* Your Bias information - dominant bias  */
+    display: flex; 
+    flex-direction: row;   
+}
+.Leaning2{ /* Your Bias information - bias_name  */
+    display: flex; 
+    flex-direction: row; 
+}
+.Leanings{ /* Your Bias information - (%)  */
+    display:flex;
+    flex-direction:row;  
+}
+.your_session_info{
+  display:flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: 1%;
+  border-top-left-radius: 15px;
+  font-weight: 600;
+  /* border: 1px solid black; */
+  /* width: 300px; */
+  /* trying to fix the resizing when secs go to minutes */
+}
+.sess_title{
+    display:flex;
+    justify-content:center;
+    /* margin-bottom: 3%; */
+    /* border: 1px solid black; */
+}
+.sess_under{
+    display: flex; 
+    flex-direction: row;
+  justify-content:space-around;
+  font-weight: 500;
+  /* border: 1px solid black; */
+}
+.sess_part1{
+    display:flex;
+    flex-direction:column;
+    justify-self: start; 
+}
+  .num_articles{
+      display:flex;
+      flex-direction:row;
+      margin-right:5%;
+      /* border: 1px solid black;   */
+  }
+  .avg_reading{
+    display:flex;
+    flex-direction:row;  
+    /* border: 1px solid black;  */
+  }
+  .session_time{
+    display:flex;
+    flex-direction:row; 
+    /* border: 1px solid black;   */
+  }
+  .session_time_value{
+    display:flex;
+    flex-direction:row;
+    flex-wrap: nowrap;
+    white-space: nowrap;  
+  }
+  .click_time{
+    display:flex;
+    flex-direction:row;
+    /* border: 1px solid black;       */
+  }
+  .scroll_time{
+    display:flex;
+    flex-direction:row;
+    /* border: 1px solid black;       */
+  }
+
+.control_container{
+      height: 18%;
+      font-size: 20px;
+      display: flex;
+      flex-direction: row;
+      justify-content:space-evenly;
+      align-items: center;
+      background-color:rgb(249, 249, 249);
+      border: 1px solid lightgrey;
+      border-bottom-left-radius: 15px;
+      border-bottom-right-radius: 15px;
+      padding: 5px;
+      color: rgb(88, 88, 88);
+      font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+} 
+.current_part3{ /* Current article information -ID  */
+  display:flex;
+  flex-direction:row;
+  justify-self: start;
+  /* font-weight: 200; */
+  /* border: 1px solid black; */
+}
+  .articles_btns{
+      display: flex;
+      flex-direction: row;
+      /* justify-content: space-between; */
+      /* align-items: center; */
+      /* width:10vw;
+      height:100vh;
+      border: 1px solid black; */
+  }
+    /* For Article's buttons */
+  .item{
+      width:6vw;
+      height:15%;
+      border: 1px solid lightgray;
+      border-radius: 5em;
+      align-items: center;
+      align-content: center;
+      text-align: center;
+      background: whitesmoke;
+      margin-left: 1vw;
+      font-size: 90%;
+      padding: .1em;
+  }
+  .item:hover{
+      border: 1px solid rgb(206,220 , 247);
+      background:rgb(206,220 , 247);
+      cursor: pointer;
+  }
+  /* .item.active {
+    background: lightseagreen;
+  }
+  .item.active {
+    background: lightseagreen;
+  }  */
+  a { 
+      text-decoration:none 
+  }
+  .sentiment_info{
+    display: flex;
+    flex-direction: column;
+    /* justify-content: space-between; */
+    padding: 1%;
+  }
+  .sentiment_title{
+    font-weight: 600;
+  }
+
+  #button{
+    border: 1px solid lightgray;
+    border-radius: 5em;
+    background: whitesmoke;
+    color: lightgray;
+    padding: .2em;
+    width: 2%;
+  }
+  #button:hover{
+    cursor: pointer;
+  }
+ /* .isMin::after{
+  background: black;
+ } */
+.icon{
+  background-size: cover;
+  width:1em;
+  height:1em;  
+  margin-right: .3em;
+  /* border: 1px solid black;  */
+}
+#stopwatch{
+  background-image: url(../image/icons8-stopwatch-50.png);
+}
+
+#book{
+  background-image: url(../image/icons8-open-book-50.png);
+}
+#clock{
+  background-image: url(../image/icons8-time-machine-50.png);
+
+}
+#emotion{
+  background-image: url(../image/icons8-faces-50.png);
+}
+#polar{
+  background-image: url(../image/icons8-magnet-therapy-30.png);
+  margin-right: 0%;
+}

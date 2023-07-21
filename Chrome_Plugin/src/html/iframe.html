@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+  <head>
+    <link rel="stylesheet" type="text/css" href="../css/iframe.css">
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/p5@1.4.0/lib/p5.js"></script>
+    <script src="https://d3js.org/d3.v7.min.js"></script>
+    <script src="../lib/firebase-app.js"></script>
+    <script src="../lib/firebase-auth.js"></script>
+    <script src="../lib/firebase-database.js"></script>
+    <script src="../lib/firebase-analytics.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+   
+    <script src="..node_modules/bootstrap/dist/js/bootstrap.min.js"></script>
+    <script src="https://code.jquery.com/jquery-3.6.0.js"></script>
+    <script src="https://code.jquery.com/ui/1.13.2/jquery-ui.js"></script>
+    <script src="external/jquery/jquery.js"></script>
+    <script src="jquery-ui.min.js"></script>
+    <link rel="stylesheet" href="../css/jquery-ui.css">
+    <link rel="stylesheet" href="../css/jquery-ui.min.css">
+  </head>
+  <body onload="list_generator()">
+    <div class="big_one">
+      <div class="upper_info">
+        <div class="your_session_info">
+          <div class="sess_title">Your&nbsp;Session</div>
+          <div class="sess_under">
+            <div class="sess_part1">
+              <div class="session_time">
+                <span id="stopwatch" class="icon"></span>
+                <!-- <span class="texts">Reading&nbsp;Time&nbsp;:&nbsp;</span> -->
+                <span class="session_time_value"></span>
+              </div>   
+              <div class="num_articles">
+                <span id="book" class="icon"></span>
+                <div class="numArticles"></div>
+                <span class="texts">&nbsp;Articles&nbsp;Read</span>
+              </div>
+              <div class="avg_reading">
+                <span id="clock" class="icon"></span>
+                <div class="texts">Avg&nbsp;Reading&nbsp;Time&nbsp;:&nbsp;</div>
+                <div class="time">0</div><div>&nbsp;Secs</div>
+              </div>
+            </div> 
+          </div>
+        </div>
+        <div class="currnet_article_info">
+          <div class="current_article">
+            <div class="article_title"></div>
+          </div>
+          <div class="current_part1">
+            <div class="estimated_read_time"></div>
+            <div>&nbsp;&#124;&nbsp;</div>
+            <div class="info_source">
+              <div class="source" id="source"></div>
+              <div>&nbsp;&#40;bias: <span class="bias" id="bias"></span></div>&#41;
+            </div>
+            <div>&nbsp;&#124;&nbsp;</div>
+            <div>Public Health</div>
+          </div> 
+          <div class="current_part2">
+            <span id="emotion" class="icon"></span>
+            <div class="article_sentiment"></div>
+            <div>&nbsp;&nbsp;</div>
+            <span id="polar" class="icon"></span>
+            <div class="article_polarization"></div>
+            <div class="article_keywords"></div>
+          </div>
+        </div> 
+        <div class="your_bias_info">
+          <div class="chart_title">Your&nbsp;Dominant&nbsp;Bias</div>
+          <div class="under_chart">
+            <div class="bias_info_part1">
+              <div><canvas id="myChart" style="height:60px; width:60px"></canvas></div> 
+            </div>
+            <div class="bias_info_part2">
+              <div class="Leaning2">
+                &nbsp;&nbsp;<div class="dbias"></div>&nbsp;(<div class="Leanings"></div><div>%</div>)  
+              </div>  
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="control_container">
+        <div class="current_part3">
+          <div class="texts">Article&nbsp;ID&nbsp;:&nbsp;</div>
+          <div class="article_id"></div>
+        </div>
+        <div class="articles_btns" id="articles_btns" name="articles_btns"></div>
+        <button id="button">-</button>
+      </div>
+    </div>
+    <script src="../js/iframe.js"></script>
+  </body>
+</html>
+<!doctype html>
