@@ -66,7 +66,7 @@ else if (active_url.includes('fox')) {
 
 function highlightWord(node, word) {
     let searchWord = new RegExp(`\\b(${word})\\b`, 'gi');
-    let replaceWith = `<mark class='highlighted-word' style='background-color: yellow;' data-tooltip="${wordTooltips[word] || ''}">$1</mark>`;
+    let replaceWith = `<mark class='highlighted-word' style='background-color: lightgray;' data-tooltip="${wordTooltips[word] || ''}">$1</mark>`;
 
     let childNodes = Array.from(node.childNodes);
     childNodes.forEach(child => {
