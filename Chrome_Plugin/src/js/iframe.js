@@ -223,12 +223,13 @@ if(searchParams.has("srcid") && searchParams.has("uid")){
 //     'https://www.vox.com/2015/8/20/9179217/paleo-diet-jeb-bush-weight-lossbbb0'
 // ];
 const list_articles = [
-    'https://thepeoplesvoice.tv/wef-says-fashion-will-be-abolished-by-2030-humans-will-all-wear-a-uniform/',
-    'https://dunning-kruger-times.com/miss-usa-boycotts-miss-universe-pageant-im-not-competing-against-a-man/',
-    'https://www.dailywire.com/news/biden-claims-his-uncle-won-purple-heart-during-world-war-ii-battle-but-details-make-bidens-story-impossible',
-    'https://www.cbsnews.com/news/white-house-cocaine-west-wing-secret-service-investigation/',
-    'https://www.nbcnews.com/news/us-news/least-9-people-child-teen-hurt-dc-shooting-fourth-july-celebrations-rcna92602',
-    'https://www.foxnews.com/politics/trump-attacks-bidens-media-discovery-cocaine-white-house-weekend'
+
+    'https://thepeoplesvoice.tv/wef-says-fashion-will-be-abolished-by-2030-humans-will-all-wear-a-uniform/uid=A23',
+    'https://dunning-kruger-times.com/miss-usa-boycotts-miss-universe-pageant-im-not-competing-against-a-man/uid=A47',
+    'https://www.dailywire.com/news/biden-claims-his-uncle-won-purple-heart-during-world-war-ii-battle-but-details-make-bidens-story-impossible/uid=A19',
+    'https://www.cbsnews.com/news/white-house-cocaine-west-wing-secret-service-investigation/uid=A34',
+    'https://www.nbcnews.com/news/us-news/least-9-people-child-teen-hurt-dc-shooting-fourth-july-celebrations-rcna92602/uid=A50',
+    'https://www.foxnews.com/politics/trump-attacks-bidens-media-discovery-cocaine-white-house-weekend/uid=A13'
 ];
 
 const article_sentiments =[
@@ -357,7 +358,7 @@ function list_generator() {
 
     let currentIndex = list_articles.findIndex(article => currentUrl.includes(article.split('/uid=')[0]));
   
-    for (let i = 0; i < 10; i++) {
+    for (let i = 0; i < 6; i++) {
       var article_button = document.createElement('div');
       article_button.className = 'item item' + i;
       let article = list_articles[i].split('/uid=')[0];
