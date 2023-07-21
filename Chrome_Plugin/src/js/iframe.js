@@ -223,7 +223,6 @@ if(searchParams.has("srcid") && searchParams.has("uid")){
 //     'https://www.vox.com/2015/8/20/9179217/paleo-diet-jeb-bush-weight-lossbbb0'
 // ];
 const list_articles = [
-
     'https://thepeoplesvoice.tv/wef-says-fashion-will-be-abolished-by-2030-humans-will-all-wear-a-uniform/uid=A23',
     'https://dunning-kruger-times.com/miss-usa-boycotts-miss-universe-pageant-im-not-competing-against-a-man/uid=A47',
     'https://www.dailywire.com/news/biden-claims-his-uncle-won-purple-heart-during-world-war-ii-battle-but-details-make-bidens-story-impossible/uid=A19',
@@ -245,7 +244,7 @@ const article_sentiments =[
 
 const article_keywords = [
     ['arup', 'uniform', 'consumption', 'global', 'world', 'fashion', 'c40', 'wef', 'cities', 'report', 'wear', 'future', '2030', 'urban', 'humans', 'emissions', 'abolished'],
-    ['valerie', 'compete', 'community', 'im', 'boycotts', 'won', 'rikki', 'miss', 'told', 'usa', 'wont', 'pageant', 'competing', 'universe', 'shes', 'man',]
+    ['valerie', 'compete', 'community', 'im', 'boycotts', 'won', 'rikki', 'miss', 'told', 'usa', 'wont', 'pageant', 'competing', 'universe', 'shes', 'man',],
     ['bidens', 'world', 'purple', 'ii', 'uncle', 'won', 'details', 'biden', 'impossible', 'frank', 'claims', 'battle', 'bulge', 'heart', 'war', 'died', 'president'],
     ['substance', 'confirmed', 'west', 'service', 'secret', 'visitors', 'tours', 'wing', 'cocaine', 'white', 'house'],
     ['weekend', 'holiday', 'killed', 'violence', 'injured', 'shootings', 'mass', '17', 'including', 'data', 'fourth', 'shooting', 'recorded', 'shows', 'mark', 'gun', 'early'],
@@ -338,6 +337,20 @@ function finishFunction() {
 
 //05.06.2023 for article_id
 //url and const list_article compare
+
+function shuffleMultipleArrays(array1, array2, array3, array4) {
+    for (let i = array1.length - 1; i > 0; i--) {
+        let j = Math.floor(Math.random() * (i + 1));
+        [array1[i], array1[j]] = [array1[j], array1[i]];
+        [array2[i], array2[j]] = [array2[j], array2[i]];
+        [array3[i], array3[j]] = [array3[j], array3[i]];
+        [array4[i], array4[j]] = [array4[j], array4[i]];
+    }
+    return [array1, array2, array3, array4];
+}
+
+[list_articles, article_sentiments, article_keywords, article_polarizations] = shuffleMultipleArrays(list_articles, article_sentiments, article_keywords, article_polarizations);
+
 function setArticleID() {
     const url = window.location.href;
 
@@ -352,111 +365,74 @@ function setArticleID() {
     }
 }
 
+setArticleID();
 
 function list_generator() {
     var container_part = document.getElementById('articles_btns');
-
-    let currentIndex = list_articles.findIndex(article => currentUrl.includes(article.split('/uid=')[0]));
+    
+    let currentIndex = list_articles.findIndex(article => window.location.href.includes(article.split('/uid=')[0]));
   
     for (let i = 0; i < 6; i++) {
-      var article_button = document.createElement('div');
-      article_button.className = 'item item' + i;
-      let article = list_articles[i].split('/uid=')[0];
-      let uniqueId = list_articles[i].split('/uid=')[1];
+        var article_button = document.createElement('div');
+        article_button.className = 'item item' + i;
+        let article = list_articles[i].split('/uid=')[0];
+        let uniqueId = list_articles[i].split('/uid=')[1];
         
-      //article_button.innerHTML = '<a href=\'' + article + '\' target=\'_top\' onclick=\'warning_comment("' + uniqueId + '"); setActiveArticle("' + uniqueId + '");\'>Article #' + (i + 1) + '</a>';
-    article_button.innerHTML = `<a href="${article}" target="_top" onclick="warning_comment('${uniqueId}'); sendSessionData(); setActiveArticle('${uniqueId}');">Article ${i + 1}</a>`;
+        article_button.innerHTML = `<a href="${article}" target="_top" onclick="warning_comment('${uniqueId}'); sendSessionData(); setActiveArticle('${uniqueId}');">Article ${i + 1}</a>`;
 
-    if (i === currentIndex) {
-        article_button.style.backgroundColor = 'rgb(206,220 , 247)';
-        article_button.style.borderColor = 'white';
-      }
+        if (i === currentIndex) {
+            article_button.style.backgroundColor = 'rgb(206,220 , 247)';
+            article_button.style.borderColor = 'white';
+        }
 
-    container_part.appendChild(article_button);
+        container_part.appendChild(article_button);
     }
+
     var finish_button = document.createElement('div');
     finish_button.className = 'item finish';
     finish_button.innerHTML = '<a href="#" onclick="finishFunction();">Finish</a>';
     container_part.appendChild(finish_button);
 
-    setArticleID();
-
     const first_article = list_articles[0].split('/uid=')[0];
-    if (current_url.includes(first_article)) {
+    if (window.location.href.includes(first_article)) {
         alert('Welcome! Please read this article carefully and proceed to the other monitor to take the survey after you are done.')
         alert('This article contains images or descriptions that may be disturbing or unsettling for some readers. Press OK button to continue loading this article.')
+    }
 
-    }   
-  }
+    // New code block starts here
+    let currIndex = list_articles.findIndex(article => window.location.href.includes(article.split('/uid=')[0]));
+    
+    if (currIndex >= 0) {
+        article_sentiment = article_sentiments[currIndex];
+        article_polarization = article_polarizations[currIndex];
+        article_keyword = article_keywords[currIndex];
+        estimated_read_time = estimated_read_times[currIndex];
+        
+        d3.select(".estimated_read_time").text(estimated_read_time + " min read");
 
+        let sentimentText = d3.select(".article_sentiment");
+        let polarText = d3.select(".article_polarization");
+        let keywordText = d3.select(".article_keywords");
 
-function isNumeric(val) {
-    return /^-?\d+$/.test(val);
-};
-//05.06.2023 Get message from scroll.js
-function receiveMessage(event){
-    //In this part we can add security module for checking origin
+        // fake loader for sentiment
+        sentimentText.text("Analyzing Sentiment...").style("color", "purple");
+        polarText.text("Analyzing Political Polarization...").style("color", "purple");
+        keywordText.text("Analyzing Keywords...").style("color", "purple");
 
-    if(isNumeric(event.data[0])){ //scroll time
+        function analyseSentiment() {
+            sentimentText.text(article_sentiment);
+            polarText.text(article_polarization);
+            keywordText.text("Keywords: " + article_keyword.slice(0,3)+"...");
 
-        scroll_count = event.data[0];
-      d3.select(".stime").text(Math.floor(scroll_count/10));
-      //sendScrollData(user_id, processDate().date, processDate().time, url, Math.floor(scroll_count));
-      //Bring scroll data from database based on in a day with an uid, calculate avg of it.
-      //let temp = getScrollData(user_id, processDate().date);
-      //console.log("Get scroll data from db ::", temp[0]);
-    };
-    if(!isNumeric(event.data[1])){ //article title
-        //console.log("iframe.js received post msg:", event.data);
-        article_title = event.data[1];
-        let full_title = article_title;
-        if(article_title.length>50){
-            // truncates without cutting off a word
-            article_title = article_title.substring(0,45).split(" ").slice(0, -1).join(" ");
-            article_title = article_title+'...';
+            article_sentiment == "Positive" ? sentimentText.style("color", "mediumseagreen") : sentimentText.style("color", "firebrick");
+            article_polarization == "Low Polarization" ? polarText.style("color", "mediumseagreen") : polarText.style("color", "firebrick") ;
         }
-        let article_div = d3.select(".article_title");
-        article_div.text(article_title);
-        article_div.attr("title", full_title);
-    };
-    if(isNumeric(event.data[2])){ //Number of clicks
-        click_count = event.data[2];
-        d3.select(".ctime").text(click_count);
-    };
-};
-window.addEventListener("message", receiveMessage, false);
 
-// Adding Sentiment Analysis, Political Polarization, Estimated Reading Time
-// to do: store in function
-var article_sentiment='';
-var article_polarization='';
-var estimated_read_time='';
-let currIndex = list_articles.findIndex(article => currentUrl.includes(article.split('/uid=')[0]));
-article_sentiment=article_sentiments[currIndex];
-article_polarization=article_polarizations[currIndex];
-//New Keyword Variable
-article_keyword= article_keywords[currIndex];
-estimated_read_time=estimated_read_times[currIndex];
-d3.select(".estimated_read_time").text(estimated_read_time+" min read");
-let sentimentText=d3.select(".article_sentiment");
-let polarText=d3.select(".article_polarization");
-//New Keyword variable
-let keywordText = d3.select(".article_keywords");
-
-// fake loader for sentiment
-sentimentText.text("Analyzing Sentiment...").style("color", "purple");
-polarText.text("Analyzing Political Polarization...").style("color", "purple");
-
-function analyseSentiment(){
-    sentimentText.text(article_sentiment);
-    polarText.text(article_polarization);
-    //new keyword print
-    keywordText.text("Keywords: " + article_keyword.slice(0,3)+"...");
-    article_sentiment == "Positive" ? sentimentText.style("color", "mediumseagreen") : sentimentText.style("color", "firebrick");
-    article_polarization == "Low Polarization" ? polarText.style("color", "mediumseagreen") : polarText.style("color", "firebrick") ;
+        setTimeout(analyseSentiment, 4000);
+    }
 }
 
-setTimeout(analyseSentiment, 4000);
+
 
 // Button that minimizes/expands tool
 $( function minimizeTool() {
